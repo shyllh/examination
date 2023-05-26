@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <link
+      href="https://unpkg.com/layui@2.8.3/dist/css/layui.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/layui@2.8.3/dist/layui.js"></script>
+    <style>
+      ul li {
+        height: 100px;
+      }
+      ul {
+        height: 750px;
+      }
+      #ifam {
+        width: 1100px;
+        height: 750px;
+        float: left;
+        position: absolute;
+        top: 0;
+        left: 18%;
+        margin-top: 20px;
+      }
+      body {
+        position: relative;
+        background-color: aliceblue;
+      }
+      #tui {
+        float: right;
+        margin-top: 5px;
+        color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tui">退出登录</div>
+    <ul class="layui-nav layui-nav-tree" lay-filter="test">
+      <li
+        style="
+          line-height: 100px;
+          text-align: center;
+          color: cornflowerblue;
+          font-size: 20px;
+        "
+      >
+        系统管理
+      </li>
+      <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+      <li class="layui-nav-item layui-nav-itemed" data-url="首页.html">
+        <a href="javascript:;">首页</a>
+      </li>
+      <li class="layui-nav-item" data-url="用户管理.html">
+        <a href="javascript:;">用户管理</a>
+      </li>
+      <li class="layui-nav-item" data-url="系统监控.html">
+        <a href="javascript:;">系统监控</a>
+      </li>
+    </ul>
+    <iframe src="首页.html" frameborder="0" id="ifam"></iframe>
+    <script>
+      $(function () {
+        //给li点击事件
+        $(".layui-nav-item").click(liFun);
+      });
+      function liFun() {
+        let url = $(this).attr("data-url");
+        $("#ifam").prop("src", url);
+      }
+      $("#tui").click(function () {
+        if (confirm("确定退出登录吗?")) {
+          window.location.href = "登录.html";
+        }
+      });
+    </script>
+  </body>
+</html>

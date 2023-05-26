@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo</title>
+  <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+  <link href="https://unpkg.com/layui@2.8.3/dist/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<div id="demo-laypage-normal-1"></div>
+<div id="demo-laypage-normal-2"></div>
+  
+<!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+<script src="https://unpkg.com/layui@2.8.3/dist/layui.js"></script>
+<script>
+layui.use(function(){
+  var laypage = layui.laypage;
+  // 普通用法
+  laypage.render({
+    elem: 'demo-laypage-normal-1',
+    count: 50 // 数据总数
+  });
+  laypage.render({
+    elem: 'demo-laypage-normal-2',
+    count: 100 // 数据总数
+  });
+});
+</script>
+</body>
+</html>

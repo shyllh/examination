@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <title>Document</title>
+    <style>
+      #nav {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+      }
+      #one1,
+      #one2,
+      #one3 {
+        width: 400px;
+        height: 130px;
+        margin: 10px;
+        text-align: center;
+        box-shadow: 2px 2px 10px 0px rgb(185, 185, 185);
+        transition: background-color 1s ease-in-out;
+        background-color: rgba(248, 252, 255, 0.3);
+      }
+      #ima1,
+      #ima2,
+      #ima3 {
+        width: 100px;
+        height: 80%;
+        margin-top: 3%;
+        margin-left: 2%;
+      }
+      #one1:hover #ima1 {
+        background-color: rgb(108, 232, 191);
+        transition: background-color 3s ease;
+        border-radius: 50px;
+      }
+      #one2:hover #ima2 {
+        background-color: rgb(99, 176, 211);
+        transition: background-color 3s ease;
+        border-radius: 50px;
+      }
+      #one3:hover #ima3 {
+        background-color: rgb(239, 193, 100);
+        transition: background-color 3s ease;
+        border-radius: 50px;
+      }
+      #nav div img {
+        float: left;
+        margin-top: 13%;
+        margin-left: 8%;
+        width: 80px;
+        height: 80px;
+      }
+      #main {
+        width: 100%;
+        height: 570px;
+        margin: 0 auto;
+      }
+      span {
+        margin-top: -20%;
+        display: inline-block;
+        float: right;
+        margin-right: 20%;
+      }
+      a{
+        color: black;
+      }
+      #ifaa{
+        width: 100%;
+        height: 540px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="tou">
+        <div id="nav">
+          <div id="one1" class="lll" data-url="one1.html">
+            <div id="ima1"><img src="../img/用户.png" alt="" /></div>
+            <a href="javascript:;"><span> 用户登陆量</span></a>
+          </div>
+          <div id="one2" class="lll" data-url="one2.html">
+            <div id="ima2"><img src="../img/plane.png" alt=""/></div>
+            <a href="javascript:;"><span>接口请求量</span></a>
+          </div>
+          <div id="one3" class="lll" data-url="one3.html">
+            <div id="ima3"><img src="../img/服务地球.png" alt=""/></div>
+            <a href="javascript:;"><span>ip登录量</span></a>
+          </div>
+        </div>
+      </div>
+      <!-- <div id="main"></div> -->
+    </div>
+    <iframe src="one1.html" frameborder="0" id="ifaa"></iframe>
+    <script>
+      $(function () {
+                //给li点击事件
+                $(".lll").click(liFun);
+            });
+            function liFun() {
+                let url = $(this).attr("data-url");
+                $("#ifaa").prop("src", url);
+            }
+    </script>
+  </body>
+</html>

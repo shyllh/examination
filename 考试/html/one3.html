@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <title>Document</title>
+    <style>
+      #main {
+        width: 100%;
+        height: 520px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+    <script>
+      var chartDom = document.getElementById("main");
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      option = {
+  xAxis: {
+    type: "category",
+    data: [
+      "周一",
+      "周二",
+      "周三",
+      "周三",
+      "周四",
+      "周五",
+      "周六",
+      "周日",
+    ],
+  },
+  yAxis: {
+    type: "value",
+  },
+  legend: {
+    data: ["本周ip登录量", "上周ip登录量"],
+  },
+  series: [
+    {
+      name: "本周ip登录量",
+      data: [122, 988, 773, 560, 800, 1330, 1200, 597],
+      type: "line",
+      smooth: true,
+    },
+    {
+      name: "上周ip登录量",
+      data: [1200, 1000, 500, 700, 1023, 342, 1300, 988],
+      type: "line",
+      smooth: true,
+    },
+  ]
+      };
+
+      option && myChart.setOption(option);
+    </script>
+  </body>
+</html>

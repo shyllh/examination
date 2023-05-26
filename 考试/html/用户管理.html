@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+  <link href="https://unpkg.com/layui@2.8.3/dist/css/layui.css" rel="stylesheet">
+  <script src="https://unpkg.com/layui@2.8.3/dist/layui.js"></script>
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.2s;
+      border-radius: 10px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.2s;
+      border-radius: 50%;
+    }
+
+    input:checked+.slider {
+      background-color: #2196f3;
+    }
+
+    input:focus+.slider {
+      box-shadow: 0 0 1px #2196f3;
+    }
+
+    input:checked+.slider:before {
+      transform: translateX(20px);
+    }
+
+    tr {
+      height: 50px;
+    }
+
+    thead {
+      background-color: #addaff;
+    }
+
+    input {
+      width: 200px;
+      height: 30px;
+    }
+
+    #btn {
+      height: 38px;
+      width: 50px;
+      border: none;
+      background-color: #50aefc;
+      border-radius: 10px;
+    }
+
+    #btn1 {
+      height: 38px;
+      width: 100px;
+      border: none;
+      background-color: #05b4ff;
+      border-radius: 10px;
+    }
+
+    #rig {
+      float: right;
+    }
+
+    #remo {
+      background-color: #63c8fe;
+      color: red;
+      border: none;
+      height: 38px;
+      width: 45px;
+      border-radius: 10px;
+    }
+
+    #xg {
+      background-color: #8fd8ff;
+      color: rgb(254, 254, 254);
+      border: none;
+      height: 38px;
+      width: 45px;
+      border-radius: 10px;
+    }
+
+    #jia {
+      width: 300px;
+      height: 400px;
+      text-align: center;
+      background-color: #94d6fd;
+      padding-top: 40px;
+      border-radius: 20px;
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      display: none;
+    }
+    #xiu1 {
+      width: 300px;
+      height: 400px;
+      text-align: center;
+      background-color: #94d6fd;
+      border-radius: 20px;
+      padding-top: 40px;
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      display: none;
+    }
+
+    #btn2 {
+      height: 30px;
+      width: 50px;
+      border: none;
+      background-color: #39a2fd;
+      border-radius: 10px;
+    }
+
+    #btn3 {
+      height: 30px;
+      width: 50px;
+      border: none;
+      background-color: #39a2fd;
+      border-radius: 10px;
+    }
+
+    body {
+      position: relative;
+    }
+    #xg1{
+      background-color: #39a2fd;
+      border: none;
+      height: 30px;
+      width: 70px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="rig">
+    <input type="text" name="" id="" placeholder="请输入您要搜索的用户名" /><button id="btn">搜索</button>
+  </div>
+  <button id="btn1" onclick="btn()">添加用户</button>
+  <form action="" id="jia">
+    <h3>添加用户</h3>
+    <br><br>
+    <input type="text" name="" id="acc" placeholder="请设置您的账户名" /><br><br>
+    <input type="text" name="" id="name" placeholder="请设置您的用户名"><br><br>
+    <input type="number" name="" id="num" placeholder="请输入您的电话号码" /><br><br>
+    <input type="text" name="" id="emal" placeholder="请输入您的邮箱"><br><br>
+    <input type="text" name="" id="sex" placeholder="请输入您的性别"><br><br><br>
+    <button id="btn2" onclick="queding()">提交</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<button id="btn3"onclick="qx()">取消</button>
+  </form>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>账户</th>
+        <th>用户名</th>
+        <th>电话</th>
+        <th>邮箱</th>
+        <th>性别</th>
+        <th>修改时间</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div id="demo-laypage-theme-1"></div>
+  <form action="" id="xiu1">
+    <h3>修改用户</h3>
+    <br><br>
+  <input type="text" name="" id="names" placeholder="请设置您的账户名" /><br><br>
+  <input type="text" name="" id="username" placeholder="请设置您的用户名"><br><br>
+  <input type="number" name="" id="number" placeholder="请输入您的电话号码" /><br><br>
+  <input type="text" name="" id="emila" placeholder="请输入您的邮箱"><br><br>
+  <input type="text" name="" id="gender" placeholder="请输入您的性别"><br><br><br><br>
+  <button onclick="updataBtn()" id="xg1">确定修改</button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn3" onclick="qx()">取消</button>
+
+</form>
+  <script>
+    const yhgl = [
+      {
+        acc: "one",
+        name: "黄蓉",
+        num: "16372286831",
+        emal: "user@1233.com",
+        sex: "女",
+      },
+      {
+        acc: "two",
+        name: "李靖",
+        num: "19823746677",
+        emal: "user@3455.com",
+        sex: "男",
+      },
+      {
+        acc: "three",
+        name: "令狐冲",
+        num: "13928343377",
+        emal: "user@2344.com",
+        sex: "男",
+      },
+
+      {
+        acc: "four",
+        name: "郭襄",
+        num: "18823433771",
+        emal: "user@5677.com",
+        sex: "女",
+      },
+    ];
+    layui.use(function(){
+  var laypage = layui.laypage;
+  // 自定义主题
+  laypage.render({
+    elem: 'demo-laypage-theme-1',
+    count: 100,
+    theme: '#1E9FFF'
+  });
+  });
+
+    h3Title = $("h3");
+    $(function () {
+      showList();
+    });
+    function qx(){
+      event.preventDefault()
+      $('form').css("display","none")
+    }
+    // 删除
+    function delBtn(index) {
+      var list = JSON.parse(localStorage.getItem('dataList'))
+      if (confirm('确定删除吗？')) {
+        list.splice(index, 1)
+      }
+      localStorage.setItem('dataList', JSON.stringify(list))
+      showList()
+    }
+
+    //添加
+    function btn() {
+      $('#jia').css('display', 'block')
+
+      addORupdate = 1;
+      h3Title.html = "添加用户"
+      // $('#save-btn').css('display','block')
+      // $("#xiu").css('display','none')
+    }
+    let form = document.querySelector('#jia')
+    function queding() {
+      event.preventDefault()
+      $("tbody tr:gt(0)").remove()
+      let acc = $("#acc").val();
+      let name = $("#name").val();
+      let num = $("#num").val();
+      let emal = $("#emal").val();
+      let sex = $("#sex").val();
+
+      var obj = {
+        acc: acc,
+        name: name,
+        num: num,
+        emal: emal,
+        sex: sex,
+      }
+      $('#jia').css('display', 'none')
+      yhgl.push(obj)
+
+      form.reset()
+      localStorage.setItem('dataList', JSON.stringify(yhgl))
+      showList()
+    }
+
+    // 渲染列表
+    function showList() {
+      let data = JSON.parse(localStorage.getItem('dataList'))
+
+      let html = "";
+      data.forEach((item, index) => {
+        html += `<tr>
+            <td>${index + 1}</td>
+        <td>${item.acc}</td>
+        <td>${item.name}</td>
+        <td>${item.num}</td>
+        <td>${item.emal}</td>
+        <td>
+            ${item.sex}</td>
+        <td>${`${year}-${month}-${day} ${hour}:${minute}:${second}`}</td>
+        <td>${`<label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>`}</td>
+        <td>
+            <button data-index="${index}" id="remo" onclick="delBtn(${index})">删除</button>
+            <button data-index="${index}" id="xg" onclick="editBtn(${index})">修改</button>
+        </td>
+    </tr>`;
+      });
+
+      $("tbody").html(html);
+    }
+    const now = new Date(); 
+    const year = now.getFullYear(); 
+    const month = now.getMonth() + 1; 
+    const day = now.getDate(); 
+    const hour = now.getHours(); 
+    const minute = now.getMinutes(); 
+    const second = now.getSeconds(); 
+
+    // 编辑
+    var i = 0
+    function editBtn(index) {
+      $('#xiu1').css("display","block")
+      var list = JSON.parse(localStorage.getItem('dataList'))
+      i = index
+      $('#names').val(list[index].acc)
+      $('#username').val(list[index].name)
+      $('#number').val(list[index].num)
+      $('#emila').val(list[index].emal)
+      $('#gender').val(list[index].sex)
+    }
+
+    // 确认修改
+    function updataBtn() {
+      event.preventDefault()
+      $('#xiu1').css("display","none")
+      var list = JSON.parse(localStorage.getItem('dataList'))
+      list[i].acc=$('#names').val()
+      list[i].name=$('#username').val()
+      list[i].num=$('#number').val()
+      list[i].emal=$('#emila').val()
+      list[i].sex=$('#gender').val()
+      localStorage.setItem('dataList', JSON.stringify(list))
+      showList()
+      $('#name').val('')
+      $('#username').val('')
+      $('#number').val('')
+      $('#emila').val('')
+      $('#gender').val('')
+    }
+
+  </script>
+</body>
+
+</html>
+

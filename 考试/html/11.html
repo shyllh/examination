@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <title>Document</title>
+    <style>
+         #main1{
+            width: 100%;
+            height: 330px;
+        }
+        #one{
+          width: 100%;
+            border-bottom: 1px solid #ccc;
+            z-index: 1;
+            line-height: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+  <div id="one">内存使用率趋势</div>
+    <div id="main1"></div>
+    <script>
+        var chartDom = document.getElementById('main1');
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['09:55:26', '09-55:30', '09:55:40', '09:55:50', '09:56:00', '09:56:05']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [820, 932, 901, 934, 1290, 1330, 1320],
+      type: 'line',
+      areaStyle: {}
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+    </script>
+</body>
+</html>
